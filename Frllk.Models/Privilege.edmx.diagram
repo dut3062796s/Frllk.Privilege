@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f670dacdad954e2b984039be4ced7496" Name="Diagram1">
+        <EntityTypeShape EntityType="PrivilegeModel.User" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PrivilegeModel.UserFunctionality" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="PrivilegeModel.UserPermission" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivilegeModel.UserRole" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="PrivilegeModel.UserToUserRole" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="PrivilegeModel.FK_UserToUserRole_User" />
+        <AssociationConnector Association="PrivilegeModel.FK_UserPermission_Functionality" />
+        <AssociationConnector Association="PrivilegeModel.FK_UserPermission_UserRole" />
+        <AssociationConnector Association="PrivilegeModel.FK_UserToUserRole_UserRole" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

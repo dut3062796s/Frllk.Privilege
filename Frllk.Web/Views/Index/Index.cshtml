@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn" ng-app="FRLLK">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewData["WebTitle"]</title>
+    <link href="@Url.Content("~/app/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/app/styles/dashboard.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/app/styles/console.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/app/vendor/jquery-1.11.2.min.js")"></script>
+    <script src="@Url.Content("~/app/vendor/angular/angular.js")"></script>
+    <script src="@Url.Content("~/app/vendor/angular/angular-route.js")"></script>
+    <script src="@Url.Content("~/app/vendor/bootstrap/js/ui-bootstrap-tpls-0.12.1.min.js")"></script>
+    <script src="@Url.Content("~/app/vendor/bootstrap-notify/bootstrap-notify.min.js")"></script>
+    @Scripts.Render("~/js/angularjs/app")
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-controller="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">@ViewData["WebTitle"]</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="{{item.isActive?'active':''}}" ng-repeat="item in ls">
+                        <a href="javascript:;">{{item.name}}</a>
+                    </li>
+                </ul>
+                <div class="navbar-form navbar-right">
+                    <a href="/login/out/" class="btn btn-default btn-sm btn-danger">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-repeat="item in urls"><a href="#{{item.link}}">{{item.title}}</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

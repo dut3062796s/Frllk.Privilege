@@ -1,0 +1,52 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">选择权限!</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontalb clearfix row-margin-1">
+        <div class="col-lg-6 clear-padding">
+            <div ce-enter="search" class="input-group">
+                <input type="text" class="form-control" ng-model="name">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="search(false)" type="button">搜索</button>
+                </span>
+            </div>
+        </div>
+    </form>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th class="col-lg-2">选择权限</th>
+                <th>权限名称</th>
+            </tr>
+        </thead>
+        <tbody ng-if="!loadingState">
+            <tr ng-click="choose(item)" ng-repeat="item in list">
+                <td class="text-center">
+                    <input ng-checked="item.isChecked" type="checkbox" />
+                </td>
+                <td>{{item.Name}}</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="loadingState">
+            <tr>
+                <td colspan="2" class="text-center">
+                    <img width="60" src="/App/images/loading.gif" />
+                </td>
+            </tr>
+        </tbody>
+        <tfoot ng-show="!loadingState">
+            <tr>
+                <td colspan="2">
+                    <div class="pull-right">
+                        <div class="pagination-info"><span class="ng-binding">共有{{total}}条</span>， <span class="ng-binding">每页显示：{{size}}条</span></div>
+                        <pagination boundary-links="true" total-items="total" ng-model="current" max-size="10" ng-change="search(true)"
+                                    items-per-page="size" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="modal-footer">
+    <button ng-click="ok()" class="btn btn-warning">确定</button>
+</div>

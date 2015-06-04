@@ -1,0 +1,52 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">“<span class="text-success">{{Name}}</span>”别名管理</h3>
+</div>
+<div class="modal-body">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>别名</th>
+                <th class="col-lg-3"><button type="button" ng-click="create(item)" class="btn btn-success btn-xs">添加别名</button></th>
+            </tr>
+        </thead>
+        <tbody ng-if="!loadingState">
+            <tr ng-click="choose(item)" ng-repeat="item in list">
+                <td class="pointer" ng-click="edit(item)" ng-if="!item.isModified">
+                    {{item.Name}}
+                </td>
+                <td ng-if="item.isModified">
+                    <input type="text" ng-model="item.Name" class="form-control" />
+                </td>
+                <td ng-if="!item.isModified">
+                    <button type="button" ng-click="remove(item)" class="btn btn-danger btn-xs">删除</button>
+                    <button type="button" ng-click="edit(item)" class="btn btn-success btn-xs">编辑</button>
+                </td>
+                <td ng-if="item.isModified">
+                    <button type="button" ng-click="cancel(item)" class="btn btn-danger btn-xs">取消</button>
+                    <button type="button" ng-click="save(item)" class="btn btn-success btn-xs">保存</button>
+                </td>
+            </tr>
+        </tbody>
+        <tbody ng-if="loadingState">
+            <tr>
+                <td colspan="2" class="text-center">
+                    <img width="60" src="/App/images/loading.gif" />
+                </td>
+            </tr>
+        </tbody>
+        <tfoot ng-show="!loadingState">
+            <tr>
+                <td colspan="2">
+                    <div class="pull-right">
+                        <div class="pagination-info"><span class="ng-binding">共有{{total}}条</span>， <span class="ng-binding">每页显示：{{size}}条</span></div>
+                        <pagination boundary-links="true" total-items="total" ng-model="current" max-size="10" ng-change="search()"
+                                    items-per-page="size" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="modal-footer">
+    <button ng-click="ok()" class="btn btn-warning">确定</button>
+</div>
